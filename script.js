@@ -134,6 +134,87 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+//Qualification
+const tabs = document.querySelectorAll('[data-target]'),
+tabContents = document.querySelectorAll('[data-content]')
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.target)
+        
+        tabContents.forEach(tabContent => {
+            tabContent.classList.remove('qualification__active')
+        })
+        target.classList.add('qualification__active')
+        
+        tabs.forEach(tab => {
+            tab.classList.remove('qualification__active')
+        })
+        tab.classList.add('qualification__active')
+    })
+})
+
+/*==================== SERVICES MODAL ====================*/
+const modalViews = document.querySelectorAll('.services__modal'),
+      modalBtns = document.querySelectorAll('.services__button'),
+      modalCloses = document.querySelectorAll('.services__modal-close')
+
+let modal = function(modalClick){
+    modalViews[modalClick].classList.add('active-modal')
+}
+
+modalBtns.forEach((modalBtn, i) => {
+    modalBtn.addEventListener('click', () => {
+        modal(i)
+    })
+})
+
+modalCloses.forEach((modalClose) => {
+    modalClose.addEventListener('click', () => {
+        modalViews.forEach((modalView) => {
+            modalView.classList.remove('active-modal')
+        })
+    })
+})
+
+
+
+/*==================== PORTFOLIO SWIPER  ====================*/
+// let swiperPortfolio = new Swiper('.portfolio__container', {
+//     cssMode: true,
+//     loop: true,
+
+//     navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//     },
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true,
+//     },
+// })
+
+
+
+
+
+/*==================== ACCORDION SKILLS ====================*/
+const contents = document.querySelectorAll('.skills__content');
+const headers  = document.querySelectorAll('.skills__header');
+
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    // close all
+    contents.forEach(c => c.classList.remove('skills__open'));
+    contents.forEach(c => c.classList.add   ('skills__close'));
+    // open clicked
+    const parent = header.parentNode;
+    parent.classList.remove('skills__close');
+    parent.classList.add   ('skills__open');
+  });
+});
+
+
 
 
 // page navigation variables
@@ -143,7 +224,6 @@ const pages = document.querySelectorAll("[data-page]");
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
     for (let i = 0; i < pages.length; i++) {
       if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
         pages[i].classList.add("active");
@@ -154,6 +234,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
         navigationLinks[i].classList.remove("active");
       }
     }
-
   });
 }
+// ---------------------------------------------------------------------------------------------------------------------------
+
