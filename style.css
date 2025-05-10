@@ -146,6 +146,7 @@ body {
   background-size: auto, auto;
   background-position: top left, 40px 40px; /* Second grid slightly shifted */
   background-blend-mode:lighten;
+  
 }
 
 
@@ -2290,7 +2291,21 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 
 /*====================    ====================*/
+canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      opacity: 0.09;
+    }
 
+    .content {
+      position: relative;
+      color: white;
+      font-size: 2em;
+      text-align: center;
+      margin-top: 40vh;
+    }
 
 /*====================  --------------------------------------------------------------------------------====================*/
 
