@@ -1,35 +1,35 @@
 'use strict';
 
 //flicker effect
-const canvas = document.getElementById('noiseCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
+// const canvas = document.getElementById('noiseCanvas');
+//     const ctx = canvas.getContext('2d');
+//     let width, height;
 
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
+//     function resizeCanvas() {
+//       width = canvas.width = window.innerWidth;
+//       height = canvas.height = window.innerHeight;
+//     }
 
-    function generateNoise() {
-      const imageData = ctx.createImageData(width, height);
-      const buffer = new Uint32Array(imageData.data.buffer);
+//     function generateNoise() {
+//       const imageData = ctx.createImageData(width, height);
+//       const buffer = new Uint32Array(imageData.data.buffer);
 
-      for (let i = 0; i < buffer.length; i++) {
-  const gray = Math.random() < 0.3 ? 0xff222222 : 0xffdddddd;
-  buffer[i] = gray;
-}
-      ctx.putImageData(imageData, 0, 0);
-    }
+//       for (let i = 0; i < buffer.length; i++) {
+//   const gray = Math.random() < 0.3 ? 0xff222222 : 0xffdddddd;
+//   buffer[i] = gray;
+// }
+//       ctx.putImageData(imageData, 0, 0);
+//     }
 
-    function loop() {
-      generateNoise();
-      requestAnimationFrame(loop);
-    }
-    // setInterval(loop, 50);
+//     function loop() {
+//       generateNoise();
+//       requestAnimationFrame(loop);
+//     }
+//     // setInterval(loop, 50);
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    loop();
+//     window.addEventListener('resize', resizeCanvas);
+//     resizeCanvas();
+//     loop();
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
