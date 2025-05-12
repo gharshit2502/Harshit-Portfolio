@@ -266,6 +266,29 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const iframe = document.getElementById('hostelMap');
+  const viewBtn = document.getElementById('viewInMaps');
+  const resetBtn = document.getElementById('resetMap');
+
+  // The exact embed URL for reset
+  const embedURL = iframe.src;
+
+  viewBtn.addEventListener('click', () => {
+    // Open the location in a full Google Maps window
+    window.open(
+      'https://www.google.com/maps?q=CTS+No.+137%2FB+Near+Growel\'s+101+Mall+Silver+Leaf+CHS+Akurli+Road+Kandivali+East+Mumbai&z=15',
+      '_blank'
+    );
+  });
+
+  resetBtn.addEventListener('click', () => {
+    // Reload the iframe to the original embed URL
+    iframe.src = embedURL;
+  });
+});
+
+
 
 // ---------------------------------------------------------------------------------------------------------------------------
 
