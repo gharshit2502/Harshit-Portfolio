@@ -247,24 +247,46 @@ headers.forEach(header => {
 
 
 // page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
+// const navigationLinks = document.querySelectorAll("[data-nav-link]");
+// const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
+// // add event to all nav link
+// for (let i = 0; i < navigationLinks.length; i++) {
+//   navigationLinks[i].addEventListener("click", function () {
+//     for (let i = 0; i < pages.length; i++) {
+//       if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+//         pages[i].classList.add("active");
+//         navigationLinks[i].classList.add("active");
+//         window.scrollTo(0, 0);
+//       } else {
+//         pages[i].classList.remove("active");
+//         navigationLinks[i].classList.remove("active");
+//       }
+//     }
+//   });
+// }
+
+// Scroll-based navbar highlight
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar-link");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        const href = link.getAttribute("href").substring(1);
+        if (href === entry.target.id) {
+          link.classList.add("active");
+        }
+      });
     }
   });
-}
+}, {
+  threshold: 0.6 // Adjust visibility trigger
+});
+
+sections.forEach(section => observer.observe(section));
 
 document.addEventListener('DOMContentLoaded', () => {
   const iframe = document.getElementById('hostelMap');

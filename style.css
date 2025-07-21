@@ -1,4 +1,10 @@
  
+html {
+  scroll-behavior: smooth;
+}
+section {
+  padding: 60px 20px;
+}
 
 :root {
 
@@ -146,6 +152,7 @@ body {
   background-size: auto, auto;
   background-position: top left, 40px 40px; /* Second grid slightly shifted */
   background-blend-mode:lighten; 
+  
   
 }
 
@@ -303,9 +310,9 @@ main {
   margin: 15px 12px;
   margin-bottom: 75px;
   min-width: 259px;
+  
 }
-
-
+ 
 
 
 
@@ -462,16 +469,24 @@ main {
 
 .navbar {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 83%, 48%, 0.75);
+  background: hsla(0, 0%, 0%);
+  border-bottom: 1px solid var(--jet);
+  z-index: 999;
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2);
   z-index: 5;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+   padding-top: 80px;  
 }
+ 
+ 
 
 .navbar-list {
   display: flex;
@@ -2350,4 +2365,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 /*====================  --------------------------------------------------------------------------------====================*/
 
 
+}
+
+.navbar-link.active {
+  color: var(--orange-yellow-crayola);
+  font-weight: bold;
+  border-bottom: 2px solid var(--orange-yellow-crayola);
 }
